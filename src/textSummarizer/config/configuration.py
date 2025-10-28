@@ -1,6 +1,7 @@
 from textSummarizer.constants import *
 from textSummarizer.utils.common import read_yaml,create_directories
 from textSummarizer.entity import DataIngestionConfig
+from textSummarizer.entity import DataValidationConfig
 
 
 class ConfigurationManager:
@@ -30,3 +31,23 @@ class ConfigurationManager:
             unzip_dir=config.unzip_dir
         )
         return data_ingestion_config
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+        """Reads data_validation configuration from config.yaml
+        and returns it as a DataValidationConfig object."""
+    # 1. Access the 'data_validation' section of the main configuration
+        config = self.config.data_validation
+
+    # 2. Create the root directory for data validation artifacts
+    # Assumes create_directories is available (e.g., imported from utils.common)
+        create_directories([config.root_dir])
+
+    # 3. Create the DataValidationConfig entity object
+        data_validation_config = DataValidationConfig(
+            root_dir=Path(config.root_dir), # Convert string path to Path object
+            STATUS_FILE=config.STATUS_FILE,
+            ALL_REQUIRED_FILES=config.ALL_REQUIRED_FILES,
+        )
+
+    # 4. Return the configured object
+        return data_validation_config
