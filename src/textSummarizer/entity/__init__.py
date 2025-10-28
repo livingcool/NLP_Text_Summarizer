@@ -23,3 +23,14 @@ class DataValidationConfig:
     root_dir: Path
     STATUS_FILE: str
     ALL_REQUIRED_FILES: list[str]
+    
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    """
+    Defines the structure for Data Transformation configuration.
+    Note: The 'tokenizer_name' is typed as Path in the image, 
+    but for a Hugging Face model name, 'str' is usually more appropriate.
+    """
+    root_dir: Path
+    data_path: Path
+    tokenizer_name: Path

@@ -1,7 +1,7 @@
 from textSummarizer.constants import *
 from textSummarizer.utils.common import read_yaml,create_directories
 from textSummarizer.entity import DataIngestionConfig
-from textSummarizer.entity import DataValidationConfig
+from textSummarizer.entity import DataValidationConfig,DataTransformationConfig
 
 
 class ConfigurationManager:
@@ -51,3 +51,24 @@ class ConfigurationManager:
 
     # 4. Return the configured object
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        """
+        Reads data_transformation configuration from config.yaml
+        and returns it as a DataTransformationConfig object.
+        """
+        # 1. Access the 'data_transformation' section
+        config = self.config.data_transformation
+
+        # 2. Create the root directory for data transformation artifacts
+        create_directories([config.root_dir])
+
+        # 3. Create the DataTransformationConfig entity object
+        data_transformation_config = DataTransformationConfig(
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            tokenizer_name=config.tokenizer_name
+        )
+
+        # 4. Return the configured object
+        return data_transformation_config
