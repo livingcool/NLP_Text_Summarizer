@@ -1,0 +1,9 @@
+# params.yaml
+# Add a placeholder top-level mapping if you haven't defined parameters yet
+base:
+  random_state: 42
+  learning_rate: 0.01
+
+model_training:
+  epochs: 10
+  batch_size: 16

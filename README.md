@@ -1,6 +1,6 @@
 # End to end Text-Summarizer-Project
 
-## Workflows
+## Workflows (After making each code change , u should update these below files in this respective order )
 
 1. Update **config.yaml**
 2. Update **params.yaml**
@@ -10,3 +10,4 @@
 6. update the **pipeline**
 7. update the **main.py**
 8. update the **app.py**
+

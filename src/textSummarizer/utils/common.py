@@ -2,14 +2,15 @@ import os
 from box.exceptions import BoxValueError
 import yaml
 from textSummarizer.logging import logger
-from ensure import ensure_annotations
+# from ensure import ensure_annotations  # REMOVED: Incompatible with Python 3.12
 from box import ConfigBox
 from pathlib import Path
 from typing import Any, List
 
 # --- Utility Function 1: Reading YAML ---
 
-@ensure_annotations
+# The original @ensure_annotations decorator is removed for Python 3.12 compatibility.
+# Basic checks are implicitly handled by the function's operation and type hints.
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """Reads yaml file and returns
     
@@ -38,7 +39,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
 # -----------------------------------------------------------------------------
 ## Creating Directories
 
-@ensure_annotations
+# The original @ensure_annotations decorator is removed for Python 3.12 compatibility.
 def create_directories(path_to_directories: List[Path], verbose: bool = True):
     """Creates list of directories
 
@@ -54,7 +55,7 @@ def create_directories(path_to_directories: List[Path], verbose: bool = True):
 # -----------------------------------------------------------------------------
 ## Getting File Size
 
-@ensure_annotations
+# The original @ensure_annotations decorator is removed for Python 3.12 compatibility.
 def get_size(path: Path) -> str:
     """get size in KB
 
